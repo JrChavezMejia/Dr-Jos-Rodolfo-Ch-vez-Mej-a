@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. José Rodolfo Chávez Mejía | </title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --azul-neon: #00e5ff;
+      --azul-luz: #00baff;
+      --dorado: #ffd700;
+      --texto-claro: #f0f6ff;
+      --texto-suave: #a9b8d6;
+      --negro-profundo: #000;
+      --gradiente: linear-gradient(135deg, var(--azul-luz), var(--azul-neon));
+      --gradiente-dorado: linear-gradient(135deg, var(--dorado), #ffae00);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background-color:var(--negro-profundo);
+      color:var(--texto-claro);
+      overflow-x:hidden;
+      line-height:1.6;
+      position:relative;
+    }
+    #particles-js{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      z-index:-1;background:#000;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+    header{text-align:center;padding:100px 20px 60px;position:relative;}
+    .profile-img{
+      width:200px;height:200px;border-radius:50%;object-fit:cover;
+      border:3px solid var(--azul-neon);
+      box-shadow:0 0 60px rgba(0,229,255,0.5);
+      animation:float 6s ease-in-out infinite;
+    }
+    header h1{
+      font-size:2.8em;font-weight:800;margin-top:25px;
+      background:var(--gradiente);-webkit-background-clip:text;
+      color:transparent;text-shadow:0 0 25px rgba(0,229,255,0.5);
+      animation:pulse 3s infinite alternate;
+    }
+    header p{color:var(--texto-suave);margin-top:15px;font-size:1.2em;}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+    @keyframes pulse{0%{text-shadow:0 0 10px rgba(0,229,255,0.3);}100%{text-shadow:0 0 30px rgba(0,229,255,0.8);}}
+    .links{margin-top:35px;display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
+    .links a{
+      color:var(--texto-claro);text-decoration:none;border:1px solid rgba(255,255,255,0.1);
+      padding:12px 24px;border-radius:30px;transition:.3s;
+      background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);
+    }
+    .links a:hover{
+      background:var(--gradiente);color:#000;transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(0,229,255,0.3);
+    }
+
+    /* Bloque Orgullo 502 */
+    .destacado-502{
+      margin:50px auto 0;max-width:800px;text-align:center;
+      background:rgba(255,215,0,0.07);
+      border:1px solid rgba(255,215,0,0.3);
+      border-radius:15px;padding:25px 20px;
+      box-shadow:0 0 25px rgba(255,215,0,0.15);
+    }
+    .destacado-502 h3{
+      background:var(--gradiente-dorado);-webkit-background-clip:text;
+      color:transparent;font-size:1.6em;margin-bottom:10px;
+    }
+    .destacado-502 p{color:var(--texto-claro);}
+    .destacado-502 a{
+      display:inline-block;margin-top:10px;color:var(--dorado);
+      text-decoration:none;font-weight:600;transition:.3s;
+    }
+    .destacado-502 a:hover{color:#fff;text-shadow:0 0 10px var(--dorado);}
+
+    section{margin:80px auto;padding:0 25px;}
+    .section-title{text-align:center;font-size:2em;margin-bottom:40px;position:relative;}
+    .section-title::after{
+      content:'';width:100px;height:3px;background:var(--gradiente);
+      position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+      border-radius:3px;
+    }
+
+    /* Videos */
+    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px;}
+    .video-box{
+      position:relative;width:100%;padding-top:56.25%;
+      overflow:hidden;border-radius:15px;box-shadow:0 10px 30px rgba(0,229,255,0.3);
+      transition:.3s;background:#0a0a0a;
+    }
+    .video-box:hover{transform:translateY(-8px);}
+    .video-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+    /* Servicios */
+    .servicios{
+      background:rgba(255,255,255,0.03);
+      border-radius:20px;padding:60px 40px;
+      box-shadow:0 0 40px rgba(0,229,255,0.1);
+    }
+    .servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+    .servicio-card{
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+      border-radius:15px;padding:25px;transition:.3s;
+    }
+    .servicio-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,229,255,0.2);}
+    .servicio-icon{font-size:2.3em;color:var(--azul-neon);margin-bottom:15px;}
+    .servicio-card h3{color:var(--texto-claro);margin-bottom:10px;}
+    .servicio-card p{color:var(--texto-suave);}
+
+    /* Galería */
+    .galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+    .galeria-item{border-radius:15px;overflow:hidden;position:relative;transition:.4s;}
+    .galeria-item img{width:100%;height:250px;object-fit:cover;transition:.5s;}
+    .galeria-item:hover img{transform:scale(1.1);}
+    .galeria-overlay{
+      position:absolute;bottom:0;left:0;right:0;
+      background:rgba(0,0,0,0.7);color:#fff;padding:15px;
+      transform:translateY(100%);transition:.3s;
+    }
+    .galeria-item:hover .galeria-overlay{transform:translateY(0);}
+    footer{text-align:center;padding:40px 20px;color:var(--texto-suave);
+      border-top:1px solid rgba(255,255,255,0.1);margin-top:60px;}
+  </style>
+</head>
+<body>
+<div id="particles-js"></div>
+
+<header>
+  <img class="profile-img" src="WhatsApp Image 2025-11-04 at 11.32.41.jpeg" alt="Dr. José Rodolfo Chávez Mejía">
+  <h1>Dr. José Rodolfo Chávez Mejía</h1>
+  <p>Investigador pionero en Inteligencia Artificial, explora su desarrollo y aplicación desde la esencia humana.</p>
+
+  <div class="links">
+    <a href="https://jrchavezmejia.github.io/CREDITOS-CLAR-CCEE-CUNOC-USAC/" target="_blank"><i class="fas fa-globe"></i> Donó la Plataforma CLAR-CUNOC-USAC</a>
+    <a href="https://chatgpt.com/g/g-68a48c2cd96881919e7637768859d364-planteamiento-del-problema" target="_blank"><i class="fas fa-brain"></i> Agente IA de Investigación</a>
+    <a href="https://chatgpt.com/g/g-68f14dcf63008191a9cc3c61d4e536fc-dr-jose-r-chavez-mejia" target="_blank"><i class="fas fa-user-graduate"></i> ¡Conoce más de mí!</a>
+    <a href="mailto:pprochame@gmail.com"><i class="fas fa-envelope"></i> Contacto</a>
+  </div>
+
+  <div class="destacado-502">
+    <h3>Reconocido como Orgullo 502</h3>
+    <p>Distinguido por <strong>Soy 502</strong>, el periódico digital más importante de Guatemala, por su aporte a la investigación, la educación y la inteligencia artificial.</p>
+    <a href="https://www.soy502.com/articulo/jose-chavez-mejia-investigador-pone-alto-quetzaltenango-101026" target="_blank"><i class="fas fa-trophy"></i> Leer artículo completo en Soy 502</a>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Videos Desarrollados con Inteligencia Artificial</h2>
+    <div class="videos">
+      <div class="video-box"><iframe src="https://www.youtube.com/embed/7JaTzxrJZR4" allowfullscreen></iframe></div>
+      <div class="video-box"><iframe src="https://www.youtube.com/embed/wHTwuqU0wnw" allowfullscreen></iframe></div>
+      <div class="video-box"><iframe src="https://www.youtube.com/embed/HOFy1bgUmJ8" allowfullscreen></iframe></div>
+      <div class="video-box"><iframe src="https://www.youtube.com/embed/5oe1oku5Poo" allowfullscreen></iframe></div>
+      <div class="video-box"><iframe src="https://www.youtube.com/embed/iVUqHPRlpzI" allowfullscreen></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="servicios">
+      <h2 class="section-title">Servicios Profesionales y Académicos</h2>
+      <div class="servicios-grid">
+        <div class="servicio-card"><div class="servicio-icon"><i class="fas fa-robot"></i></div><h3>Automatización Inteligente</h3><p>Bots, copilotos y agentes con IA integrados a WhatsApp, Telegram, Google Sheets y más.</p></div>
+        <div class="servicio-card"><div class="servicio-icon"><i class="fas fa-chart-line"></i></div><h3>Analítica de Datos</h3><p>Modelos predictivos, dashboards ejecutivos y análisis financiero inteligente.</p></div>
+        <div class="servicio-card"><div class="servicio-icon"><i class="fas fa-user-graduate"></i></div><h3>Investigación Académica</h3><p>Metodología, planteamiento del problema y publicaciones con soporte IA.</p></div>
+        <div class="servicio-card"><div class="servicio-icon"><i class="fas fa-building"></i></div><h3>Consultoría Empresarial</h3><p>Optimización de procesos administrativos, CRM inteligente y asistencia de voz.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Galería de Liderazgo e Innovación</h2>
+    <div class="galeria">
+      <div class="galeria-item"><img src="WhatsApp Image 2025-11-04 at 11.57.27.jpeg" alt="Presentación académica"><div class="galeria-overlay"><h3>Presentación Académica</h3><p>Divulgando avances en IA aplicada.</p></div></div>
+      <div class="galeria-item"><img src="WhatsApp Image 2025-11-04 at 11.55.35.jpeg" alt="Investigación práctica"><div class="galeria-overlay"><h3>Investigación de Campo</h3><p>Aplicando IA en contextos reales.</p></div></div>
+      <div class="galeria-item"><img src="WhatsApp Image 2025-11-04 at 11.54.45.jpeg" alt="Colaboración internacional"><div class="galeria-overlay"><h3>Colaboración Internacional</h3><p>Conectando ciencia y tecnología global.</p></div></div>
+      <div class="galeria-item"><img src="WhatsApp Image 2025-11-04 at 11.58.15.jpeg" alt="Reconocimiento"><div class="galeria-overlay"><h3>Reconocimiento Académico</h3><p>Inspirando con resultados e innovación.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Dr. José Rodolfo Chávez Mejía — Innovación, Ciencia y Humanidad</footer>
+
+<!-- Partículas -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js",{
+  "particles":{
+    "number":{"value":120,"density":{"enable":true,"value_area":800}},
+    "color":{"value":"#00e5ff"},
+    "shape":{"type":"circle"},
+    "opacity":{"value":0.5},
+    "size":{"value":3,"random":true},
+    "line_linked":{"enable":true,"distance":150,"color":"#00e5ff","opacity":0.3,"width":1},
+    "move":{"enable":true,"speed":5,"direction":"none","out_mode":"out"}
+  },
+  "interactivity":{
+    "events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"}},
+    "modes":{"grab":{"distance":200,"line_linked":{"opacity":0.5}}}
+  },
+  "retina_detect":true
+});
+</script>
+</body>
+</html>
